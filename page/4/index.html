@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexagram&#39;s Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexagram&#39;s Book">
+<meta property="og:url" content="https://lmx-hexagram.github.io/page/4/index.html">
+<meta property="og:site_name" content="Hexagram&#39;s Book">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="XML">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/lmx-Hexagram.github.io/atom.xml" title="Hexagram&#39;s Book" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lmx-Hexagram.github.io/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/lmx-Hexagram.github.io/" id="logo">Hexagram&#39;s Book</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/lmx-Hexagram.github.io/" id="subtitle">人生只是一本书，这里是我人生之书的抄本</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/lmx-Hexagram.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/lmx-Hexagram.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/lmx-Hexagram.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://lmx-Hexagram.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-technology-summary/hduhelp/annualsummary-summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/lmx-Hexagram.github.io/2020/06/08/technology-summary/hduhelp/annualsummary-summary/" class="article-date">
+  <time datetime="2020-06-08T15:03:01.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/lmx-Hexagram.github.io/categories/summary/">summary</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/lmx-Hexagram.github.io/2020/06/08/technology-summary/hduhelp/annualsummary-summary/">学期报告开发和踩坑总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><a href="#目录">目录</a><ul>
+<li><a href="#心路历程与开发历程">心路历程与开发历程</a></li>
+<li><a href="#技术栈">技术栈</a></li>
+<li><a href="#踩坑实录">踩坑实录</a></li>
+<li><a href="#奇技淫巧">奇技淫巧</a></li>
+<li><a href="#满意之处">满意之处</a></li>
+<li><a href="#一些遗憾">一些遗憾</a></li>
+<li><a href="#收获了什么">收获了什么</a></li>
+<li><a href="#what-next">What Next</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="心路历程与开发历程"><a href="#心路历程与开发历程" class="headerlink" title="心路历程与开发历程"></a>心路历程与开发历程</h2><p><em>根据GitHub的commit记录复盘</em></p>
+<p>2020年5月25日，也是在灵光一闪后策划了一段时间，决定做一个“杭电学期报告”<code>annualsummary</code>，也算是第一个自己认可的项目。</p>
+<p>也是在同一天，创建仓库，开工。<br>也是在同一天，第一次重构。</p>
+<p>因为本来是打算自己处理从现有接口拿来的数据，但是该方案实际不可行。于是，叫来了<a href="https://github.com/FDKevin0" target="_blank" rel="noopener">FD Kevin</a>做后端，而我来写前端。并在当天定下来json的基本结构，于是，正式开工。</p>
+<p>那么，首先规划了一下项目结构(在重构是起到了很大的作用)，使用Swiper组件实现滑动效果，并开始着手写页面。这时的我还没有意识到，前方有两个大坑等着我。</p>
+<p>到5月31日，终于是陆陆续续完成了除了end page(莫名其妙咕到了最后的end page)以外的所有page的制作，接入了cas登录，接入了API，看起来有模有样了，本以为基本可以完成了。总代码行数大概是4000+行(所有代码行数计算去除yarn-error-log)。</p>
+<p>但是，此时的布局方案采用relative以及使用Swiper组件实现切换效果，却是两个大坑。</p>
+<p>在测试中，relative + @media实现适配屏幕的方案频频出现问题，日常出现布局爆炸。以及，Swiper组件在IOS的Safari上出现了严重的性能问题，造成严重卡顿，效果堪比烤机工具。</p>
+<p>此时，学长给出的意见是：建议重构，或者改用canvas</p>
+<p>说实话，当晚心态有些爆炸。不过也还好，毕竟知道自己技术不行，还需要加强。</p>
+<p>6月1日，快速自学了一下Grid+Flex，使用其重构了所有page(状态page的重构被鸽到了最后)，并且还原了原先的视觉效果。</p>
+<p>现在回想起来挺意外的，没有试图去挽救relative布局的问题，而是果断重构。其实，在开始的时候，我就已经做好的会面积重构的准备，只是当时因为工作量太大，有一些逃避导致心态有一点不太好。</p>
+<p>6月2日，试图在现有基础上优化Swiper在Safari上的性能。</p>
+<p>也是挺意料之中的，性能优化以失败告终。</p>
+<p>应该也是6月2日吧，也大概是这个时候，决定用animate.css来制作视觉效果。</p>
+<p>6月3日，第一个commit就是<code>remove Swiper</code>，也是彻底放弃了这个库吧。使用animate.css重新实现了切换页面的视觉效果。</p>
+<p>6月4日，引入hammer.js实现比较难自己实现的滑动效果，稍微踩了一下vue-hammer库(vue-hammer已经停止维护了，别用)和箭头函数没有预期this的坑。不过总体也是挺顺利的。</p>
+<p>至此，主体开发完成，开发正式进入了debug阶段。5日，6日陆陆续续在使用层面上解决了overflow-scroll on Safari的问题，适配异形屏幕，电脑端提示(最后一个问题)等问题。并对主体做了一个clear。随着最后一次<code>clear commit</code>,annualsuammary的前端真正进入了第一个稳定版本。</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li>使用 Vue 2.0 + Vuex,并没有使用Vue-router的必要</li>
+<li>一些依赖: hammer.js + animate.css + axios </li>
+</ul>
+<h2 id="踩坑实录"><a href="#踩坑实录" class="headerlink" title="踩坑实录"></a>踩坑实录</h2><ul>
+<li><code>Swiper</code>虽然是一个很大的滑动组件库，但是慎用，页面和特效过多时，会在safari产生严重的性能问题。</li>
+<li><code>Vue.config.js</code>中不能使用<code>import</code>需要使用<code>require</code>，并且不能使用<code>alias</code>，因为<code>Vue.config.js</code>是入口文件，并不会走<code>webpack</code>打包。</li>
+<li>永远不要使用relative作为主要布局手段</li>
+<li>overflow-auto在safari上的特殊处理方式</li>
+<li>CSS中的100%与100vw，z-index等等(CSS浑身上下都是坑)</li>
+</ul>
+<h2 id="奇技淫巧"><a href="#奇技淫巧" class="headerlink" title="奇技淫巧"></a>奇技淫巧</h2><ul>
+<li>使用<code>let that = this</code>将<code>this</code>带入箭头函数</li>
+<li>CSS variable可以在子CSS中更改并使用</li>
+<li>devServer的使用</li>
+<li><code>vue public directory</code>，例如<code>public/pic/1.JPG</code>可以直接通过<code>/pic/1.JPG</code>调用</li>
+<li>用<code>javascript</code>获取页面宽度，并用页面宽度改写<code>html font size</code></li>
+</ul>
+<h2 id="满意之处"><a href="#满意之处" class="headerlink" title="满意之处"></a>满意之处</h2><ul>
+<li>项目结构的可拓展性不错</li>
+<li>至少做出来了</li>
+<li>使用了Grid + Flex布局</li>
+</ul>
+<h2 id="一些遗憾"><a href="#一些遗憾" class="headerlink" title="一些遗憾"></a>一些遗憾</h2><ul>
+<li>因为版权方面的担忧，不能使用东方project的音乐作为背景音乐</li>
+<li>对于异形屏幕使用了只适配屏幕一边的方牺牲了最佳了的视觉体验</li>
+<li>不是真正的滑动效果</li>
+<li>心心念念的parallel X没有加进去</li>
+<li>后端不是自己写的</li>
+<li>背景效果没有用上canvas</li>
+<li>没有使用vscode</li>
+<li>返回首页按钮的delay实现没有用async实现(还是只会用promise)(其实promise也是一知半解)</li>
+</ul>
+<h2 id="收获了什么"><a href="#收获了什么" class="headerlink" title="收获了什么"></a>收获了什么</h2><ul>
+<li>第一个拿得出手的项目</li>
+<li>论firefox MDN文档的重要性</li>
+<li>在项目的后段将<code>Git GUI</code>从<code>source tree</code>换成了<code>tower</code></li>
+<li>顺手整了一个Hexo + Github Page</li>
+<li>大概确定了下一个项目的方向</li>
+</ul>
+<h2 id="What-Next"><a href="#What-Next" class="headerlink" title="What Next"></a>What Next</h2><ul>
+<li>ES6<ul>
+<li>require and import</li>
+<li>async and promise</li>
+<li>arrow function expression and this</li>
+</ul>
+</li>
+<li>Javascipt<ul>
+<li>Inheritance and the prototype chain</li>
+<li>Closures</li>
+<li>Web API</li>
+</ul>
+</li>
+<li>CSS<ul>
+<li>z-index</li>
+<li>Grid + Flex</li>
+<li>Pseudo-classes + Pseudo-elements</li>
+<li>@medie</li>
+<li>animation</li>
+</ul>
+</li>
+<li>Web Compoments</li>
+<li>Self Markdown Editor</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lmx-hexagram.github.io/2020/06/08/technology-summary/hduhelp/annualsummary-summary/" data-id="ckcm4wafq00218jj02qlw647j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/lmx-Hexagram.github.io/tags/summary/" rel="tag">summary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="page-Hexo/Hexo-init" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/lmx-Hexagram.github.io/2020/06/08/Hexo/Hexo-init/" class="article-date">
+  <time datetime="2020-06-08T13:40:24.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/lmx-Hexagram.github.io/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/lmx-Hexagram.github.io/2020/06/08/Hexo/Hexo-init/">Hexo+Github Page 初步配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>来自日常踩坑，以及还是没学会看英文文档的Hexagram</p>
+</blockquote>
+<p>先放上Hexo的官方文档<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo中文文档</a>，有能力的还是建议看英文文档</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>目录<ul>
+<li><a href="#前置条件">前置条件</a></li>
+<li><a href="#建站过程">建站过程</a></li>
+<li><a href="#踩坑实录">踩坑实录</a></li>
+<li><a href="#what-next">What Next</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ul>
+<li>Git</li>
+<li>Node.js </li>
+<li>Hexo</li>
+<li>GitHub</li>
+<li>稍微会写一点yaml</li>
+<li>可能需要的特殊姿势</li>
+</ul>
+<p>emm，如果已经有需求写博客了，这几个的安装和使用应该没问题吧<br>不会的请出门右转用搜索引擎</p>
+<h2 id="建站过程"><a href="#建站过程" class="headerlink" title="建站过程"></a>建站过程</h2><ol>
+<li>本地建站<blockquote>
+<ol>
+<li>选取合适的目录</li>
+<li>打开顺手的Shell，切换到该目录</li>
+<li><code>hexo init</code></li>
+</ol>
+</blockquote>
+</li>
+<li>配置_config.yml<blockquote>
+<ol>
+<li><em>#Site</em> 部分就按照<a href="https://hexo.io/zh-cn/docs/configuration#%E7%BD%91%E7%AB%99" target="_blank" rel="noopener">文档里的介绍</a>来配置就行</li>
+<li><em>#URL</em> 配置详见<a href="#踩坑实录">踩坑实录</a></li>
+<li><em>#Deployment</em> <code>repo</code>填上自己仓库的URL(3中的仓库)<br><code>branch</code>一般填<code>master</code>就行</li>
+</ol>
+</blockquote>
+</li>
+<li>GitHub Repository<blockquote>
+<p>新建一个repo取名为 <code>你的github名字.github.io</code><br>如果需要在repo的setting里打开GitHub page</p>
+</blockquote>
+</li>
+<li>部署(deploy)<blockquote>
+<p><code>hexo clean</code> 清除public中的已生成内容(可选命令)<br><code>hexo generate</code> 生成静态网站<br><code>hexo deploy</code> 部署，如果前面的设置正确，则会推送到GitHub的对应仓库<br>之后就可以通过GitHub page的URL访问了</p>
+</blockquote>
+</li>
+<li>CNAME</li>
+</ol>
+<h2 id="踩坑实录"><a href="#踩坑实录" class="headerlink" title="踩坑实录"></a>踩坑实录</h2><ol>
+<li>Github仓库的名字<ul>
+<li>不要玩花的，就严格使用<code>你的GitHub名字.github.io</code>作为仓库名字，这样可以方便<code>_config.yml #URL</code>的配置</li>
+</ul>
+</li>
+<li><code>_config.yml</code>的<code>#URL</code>配置(可以用于解决CSS加载不出来的问题) <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://你的GitHub名字.github.io</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/你的GitHub名字.github.io</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里文档建议好好看文档的<a href="https://hexo.io/zh-cn/docs/configuration#%E7%BD%91%E5%9D%80" target="_blank" rel="noopener">URL配置说明</a></li>
+<li>如果前面一切按照<strong>建站过程</strong>配置，那么你的URL就是<code>https://你的GitHub名字.github.io</code>并且没有子目录，<code>root</code>就是你的将URL除了协议(https)的部分在抄一遍</li>
+</ul>
+</li>
+<li>CNAME<ul>
+<li>在setting里设置了CNAME之后，每次<code>hexo deploy</code>之后都会重置的解决方法</li>
+<li>在<code>source</code>下创建名字为<code>CANME</code>的file，在里面写上你添加了CNAME的域名</li>
+<li>之后每一次<code>deploy</code>就会自动的添加CNAME了</li>
+</ul>
+</li>
+</ol>
+<h2 id="What-Next"><a href="#What-Next" class="headerlink" title="What Next"></a>What Next</h2><ul>
+<li>深入Hexo</li>
+<li>配置持续集成(用更优雅的方式更新)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lmx-hexagram.github.io/2020/06/08/Hexo/Hexo-init/" data-id="ckcm4waff001k8jj01oub3z50" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/lmx-Hexagram.github.io/tags/First-Step/" rel="tag">First Step</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/lmx-Hexagram.github.io/tags/%E8%B8%A9%E5%9D%91/" rel="tag">踩坑</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Diary/2020-6-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/lmx-Hexagram.github.io/2020/06/07/Diary/2020-6-7/" class="article-date">
+  <time datetime="2020-06-07T22:00:38.000Z" itemprop="datePublished">2020-06-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/lmx-Hexagram.github.io/categories/Diary/">Diary</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/lmx-Hexagram.github.io/2020/06/07/Diary/2020-6-7/">2020-6-7</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>经历了两个星期，159 commits之后，杭电个人学期报告，终于是迎来了第一个稳定版本。</p>
+<p>算是个人在杭电助手第一次完成的规模自己认可，完成结果也比较满意的项目。接下来，会陆陆续续写一些开发经历和技术总结。</p>
+<p>也算是进入期末考阶段了，学习也要抓起来了。</p>
+<p>接下来到期末主要预计是看看MDN文档，折腾一下Hexo，以及为下一个markdown项目做一个规划吧</p>
+<p>我想要macbook pro 13’</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lmx-hexagram.github.io/2020/06/07/Diary/2020-6-7/" data-id="ckcm4waf800168jj0b6s670nd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/lmx-Hexagram.github.io/page/3/">&amp;laquo; 上一页</a><a class="page-number" href="/lmx-Hexagram.github.io/">1</a><a class="page-number" href="/lmx-Hexagram.github.io/page/2/">2</a><a class="page-number" href="/lmx-Hexagram.github.io/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lmx-Hexagram.github.io/categories/Diary/">Diary</a></li><li class="category-list-item"><a class="category-list-link" href="/lmx-Hexagram.github.io/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/lmx-Hexagram.github.io/categories/diary/">diary</a></li><li class="category-list-item"><a class="category-list-link" href="/lmx-Hexagram.github.io/categories/electron/">electron</a></li><li class="category-list-item"><a class="category-list-link" href="/lmx-Hexagram.github.io/categories/summary/">summary</a></li><li class="category-list-item"><a class="category-list-link" href="/lmx-Hexagram.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/lmx-Hexagram.github.io/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/lmx-Hexagram.github.io/tags/First-Step/" rel="tag">First Step</a></li><li class="tag-list-item"><a class="tag-list-link" href="/lmx-Hexagram.github.io/tags/flex/" rel="tag">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/lmx-Hexagram.github.io/tags/summary/" rel="tag">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/lmx-Hexagram.github.io/tags/%E8%B8%A9%E5%9D%91/" rel="tag">踩坑</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/lmx-Hexagram.github.io/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/lmx-Hexagram.github.io/tags/First-Step/" style="font-size: 10px;">First Step</a> <a href="/lmx-Hexagram.github.io/tags/flex/" style="font-size: 10px;">flex</a> <a href="/lmx-Hexagram.github.io/tags/summary/" style="font-size: 20px;">summary</a> <a href="/lmx-Hexagram.github.io/tags/%E8%B8%A9%E5%9D%91/" style="font-size: 15px;">踩坑</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lmx-Hexagram.github.io/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/lmx-Hexagram.github.io/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/lmx-Hexagram.github.io/2020/07/14/Diary/2020-7-4-14/">2020-7-4-14</a>
+          </li>
+        
+          <li>
+            <a href="/lmx-Hexagram.github.io/2020/07/03/Diary/2020-7-3/">2020-7-2</a>
+          </li>
+        
+          <li>
+            <a href="/lmx-Hexagram.github.io/2020/07/02/Diary/2020-7-2/">2020-7-2</a>
+          </li>
+        
+          <li>
+            <a href="/lmx-Hexagram.github.io/2020/07/01/Diary/2020-7-1/">2020-7-1</a>
+          </li>
+        
+          <li>
+            <a href="/lmx-Hexagram.github.io/2020/06/30/Diary/2020-6-30/">2020-6-30</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 XML<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/lmx-Hexagram.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/lmx-Hexagram.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/lmx-Hexagram.github.io/fancybox/jquery.fancybox.css">
+
+  
+<script src="/lmx-Hexagram.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/lmx-Hexagram.github.io/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
